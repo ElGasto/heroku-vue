@@ -7,14 +7,16 @@ const app = express();
 
 //Base de datos
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost:27017/vue-db';
+// const uri = 'mongodb://localhost:27017/vue-db';
+const uri = 'mongodb+srv://admin:emG8CRbXOxvDFZ9P@cluster0-3fgno.gcp.mongodb.net/vue-app?retryWrites=true&w=majority';
 const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true };
 
 mongoose.connect(uri, options).then(
     () => { console.log('Conectado a DB') },
     err => { console.log(err) }
 );
-
+// emG8CRbXOxvDFZ9P
+// mongodb + srv: //admin:<password>@cluster0-3fgno.gcp.mongodb.net/test?retryWrites=true&w=majority
 
 // Middleware
 app.use(morgan('tiny'));
