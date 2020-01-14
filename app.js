@@ -5,6 +5,17 @@ import path from 'path';
 
 const app = express();
 
+//Base de datos
+const mongoose = require('mongoose');
+const uri = 'mongodb://localhost:27017/vue-db';
+const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true };
+
+mongoose.connect(uri, options).then(
+    () => { console.log('Conectado a DB') },
+    err => { console.log(err) }
+);
+
+
 // Middleware
 app.use(morgan('tiny'));
 app.use(cors());
@@ -13,6 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas
+app.use('/api', require('./routes/nota'));
+
 //app.get('/', (req, res) => {
 //    res.send('Hello World!');
 //});
